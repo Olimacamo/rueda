@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<TITLE>Rueda</TITLE>
+<link rel="shortcut icon" href="icono.ico">
+<STYLE TYPE="text/css">
+
+
+#planeta {
+  position: absolute;
+  top:  200;
+  left: 490;
+}
+
+
+</STYLE>
+
+
+</HEAD>
+<BODY BGCOLOR="#000000" >
+
+<div>
+    <input type="button" value="mover" onclick="mover();">
+    <input type="button" value="detener" onclick="detener();">
+</div>
+<div>
+    <SPAN ID=ruedaM><img src=wheel.gif></SPAN>
+    <SPAN ID=ruedaS><img src=wheel.png></SPAN>    
+</div>
+
+<SCRIPT>
+  Xi     = 300;
+  Yi     = 200;
+  radiop = 190; 
+  radiol = 50;
+  inc    = Math.PI/130
+  ang = 0;
+
+  function mover() {
+        document.getElementById('ruedaM').style.display = 'block';
+        document.getElementById('ruedaS').style.display = 'none';
+        x_planeta = (radiop * Math.cos(ang)) + Xi;
+        y_planeta = (radiop * Math.sin(ang)) + Yi;
+
+        document.planeta.left = x_planeta;
+        document.planeta.top  = y_planeta;
+
+        ang+=inc;
+        if ( ang >= 2*Math.PI ) ang = 0;
+
+        setTimeout("mover()", 20);
+  }
+  function detener() {
+        document.getElementById('ruedaM').style.display = 'none';
+        document.getElementById('ruedaS').style.display = 'block';
+    }
+  setTimeout("mover()", 20);
+</script>
+
+</BODY>
+</HTML>
